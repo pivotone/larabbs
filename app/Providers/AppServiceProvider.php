@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Observers\TopicObserver;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Topic;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Topic::observe(new TopicObserver());
     }
 }
