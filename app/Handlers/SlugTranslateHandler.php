@@ -37,7 +37,6 @@ class SlugTranslateHandler
             "salt"  => $salt,
             "sign"  => $sign,
         ]);
-
         // 发送 HTTP Get 请求
         $response = $http->get($api.$query);
 
