@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
+use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Topic;
 use App\Models\Reply;
+use App\Models\Link;
+use App\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,8 +33,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        User::observe(new UserObserver());
         Topic::observe(new TopicObserver());
         Reply::observe(new ReplyObserver());
+        Link::observe(new LinkObserver());
     }
 }
